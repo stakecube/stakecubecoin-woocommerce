@@ -374,7 +374,7 @@ function get_scc_transaction() {
             {
                 $wpdb->update( $db_table_name, array('order_status' => 'success','confirmation_no'=>$result_array['confirmations'],'order_time'=>time(),'order_id'=>$order_id ), array('transaction_id'=>$trans_id) );
 
-                $order = new WC_SCC($order_id);
+                $order = new WC_Order($order_id);
                 $order->update_status('completed', 'SCC Transaction Done!!!'); 
                 $status = 'success';
             }
@@ -441,7 +441,7 @@ function get_trans_id()
             if($result_array['confirmations'] >= $confirmation_no)
             {
                 $wpdb->update($db_table_name, array('order_status' => 'success','confirmation_no'=>$result_array['confirmations'],'order_time'=>time(),'order_id'=>$order_id ), array('transaction_id'=>$trans_id) );
-                $order = new WC_SCC($order_id);
+                $order = new WC_Order($order_id);
                 $order->update_status('completed', 'SCC Transaction Done!!!');
 
                 $status = 'success';
